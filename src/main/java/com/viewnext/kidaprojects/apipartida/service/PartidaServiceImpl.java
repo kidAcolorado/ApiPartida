@@ -112,13 +112,13 @@ public class PartidaServiceImpl implements PartidaService {
 		
 		
 
-		ResponseEntity<List<EnemigoDTO>> respuestaMisiones = enemigoWebClient.get()
+		ResponseEntity<List<EnemigoDTO>> respuestaEnemigos = enemigoWebClient.get()
 				.uri("/enemigo")
 				.retrieve()
 				.toEntityList(EnemigoDTO.class)
 				.block();
 
-		List<EnemigoDTO> listaEnemigos = respuestaMisiones.getBody();
+		List<EnemigoDTO> listaEnemigos = respuestaEnemigos.getBody();
 		
 		List<Integer> listaIdsEnemigos = new ArrayList<>(); 
 
@@ -180,13 +180,13 @@ public class PartidaServiceImpl implements PartidaService {
 		
 		
 
-		ResponseEntity<List<PersonajeDTO>> respuestaMisiones = personajeWebClient.get()
+		ResponseEntity<List<PersonajeDTO>> respuestaPersonajes = personajeWebClient.get()
 				.uri("/personaje")
 				.retrieve()
 				.toEntityList(PersonajeDTO.class)
 				.block();
 
-		List<PersonajeDTO> listaPersonajes = respuestaMisiones.getBody();
+		List<PersonajeDTO> listaPersonajes = respuestaPersonajes.getBody();
 		
 		List<Integer> listaIdsPersonajes = new ArrayList<>(); 
 

@@ -49,7 +49,7 @@ public class PartidaRestController {
 	@PutMapping(value = "partida/enemigos/{idPartida}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> addAllEnemigos(@PathVariable("idPartida") long idPartida){
 		service.addAllEnemigos(idPartida);
-		return ResponseEntity.ok("Personajes añadidos");
+		return ResponseEntity.ok("Enemigos añadidos");
 	}
 	
 	@PutMapping(value = "partida/personajes/{idPartida}", produces = MediaType.APPLICATION_JSON_VALUE)
