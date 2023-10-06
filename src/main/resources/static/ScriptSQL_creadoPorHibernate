@@ -1,0 +1,14 @@
+Hibernate: alter table partida_enemigos drop foreign key FKkikhbxg50rae63c47jwv0in5w
+Hibernate: alter table partida_misiones drop foreign key FK8g3b4kct0i7dhp6oldeatt94j
+Hibernate: alter table partida_personajes drop foreign key FKsvb5vny3papg2eu18efrwc5nb
+Hibernate: drop table if exists partida
+Hibernate: drop table if exists partida_enemigos
+Hibernate: drop table if exists partida_misiones
+Hibernate: drop table if exists partida_personajes
+Hibernate: create table partida (id bigint not null auto_increment, descripcion varchar(255), nombre varchar(255), primary key (id)) engine=InnoDB
+Hibernate: create table partida_enemigos (enemigo_id integer, partida_id bigint not null) engine=InnoDB
+Hibernate: create table partida_misiones (mision_id integer, partida_id bigint not null) engine=InnoDB
+Hibernate: create table partida_personajes (personaje_id integer, partida_id bigint not null) engine=InnoDB
+Hibernate: alter table partida_enemigos add constraint FKkikhbxg50rae63c47jwv0in5w foreign key (partida_id) references partida (id)
+Hibernate: alter table partida_misiones add constraint FK8g3b4kct0i7dhp6oldeatt94j foreign key (partida_id) references partida (id)
+Hibernate: alter table partida_personajes add constraint FKsvb5vny3papg2eu18efrwc5nb foreign key (partida_id) references partida (id)
