@@ -13,6 +13,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 
+/**
+ * Clase que representa una partida en la aplicación.
+ *
+ * <p>Esta clase almacena información sobre las partidas, incluyendo su nombre, descripción,
+ * misiones, enemigos, personajes y estado de activación.</p>
+ *
+ * @Entity
+ */
 @Entity
 public class Partida {
     @Id

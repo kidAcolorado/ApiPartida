@@ -18,6 +18,12 @@ import com.viewnext.kidaprojects.apipartida.repository.PartidaRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 
+/**
+ * Implementación de la interfaz {@link PartidaService} que proporciona los servicios de gestión de partidas.
+ *
+ * <p>Esta clase realiza operaciones relacionadas con las partidas, como agregar misiones, enemigos y personajes,
+ * crear y dar de baja partidas, y reiniciar el estado de la aplicación.</p>
+ */
 @Service
 public class PartidaServiceImpl implements PartidaService {
 
@@ -27,12 +33,24 @@ public class PartidaServiceImpl implements PartidaService {
 	private WebClient enemigoWebClient;
 	private WebClient personajeWebClient;
 
+	/**
+     * Constructor de la clase PartidaServiceImpl.
+     *
+     * @param misionWebClient     Cliente web para la gestión de misiones.
+     * @param enemigoWebClient    Cliente web para la gestión de enemigos.
+     * @param personajeWebClient  Cliente web para la gestión de personajes.
+     */
 	public PartidaServiceImpl(WebClient misionWebClient, WebClient enemigoWebClient, WebClient personajeWebClient) {
 		this.misionWebClient = misionWebClient;
 		this.enemigoWebClient = enemigoWebClient;
 		this.personajeWebClient = personajeWebClient;
 	}
 
+	/**
+     * Agrega todas las misiones disponibles a una partida existente.
+     *
+     * @param idPartida El ID de la partida a la que se agregarán las misiones.
+     */
 	@Override
 	public void addAllMisiones(long idPartida) {
 		Optional<Partida> optionalPartida = partidaRepository.findById(idPartida);
@@ -68,6 +86,12 @@ public class PartidaServiceImpl implements PartidaService {
 
 	}
 
+	/**
+     * Agrega una misión específica a una partida existente.
+     *
+     * @param idPartida El ID de la partida a la que se agregará la misión.
+     * @param idMision  El ID de la misión que se agregará a la partida.
+     */
 	@Override
 	public void addMision(long idPartida, int idMision) {
 		Optional<Partida> optionalPartida = partidaRepository.findById(idPartida);
@@ -100,6 +124,11 @@ public class PartidaServiceImpl implements PartidaService {
 
 	}
 
+	/**
+     * Agrega todos los enemigos disponibles a una partida existente.
+     *
+     * @param idPartida El ID de la partida a la que se agregarán los enemigos.
+     */
 	@Override
 	public void addAllEnemigos(long idPartida) {
 		Optional<Partida> optionalPartida = partidaRepository.findById(idPartida);
@@ -135,6 +164,12 @@ public class PartidaServiceImpl implements PartidaService {
 
 	}
 
+	/**
+     * Agrega un enemigo específico a una partida existente.
+     *
+     * @param idPartida  El ID de la partida a la que se agregará el enemigo.
+     * @param idEnemigo  El ID del enemigo que se agregará a la partida.
+     */
 	@Override
 	public void addEnemigo(long idPartida, int idEnemigo) {
 		Optional<Partida> optionalPartida = partidaRepository.findById(idPartida);
@@ -168,6 +203,11 @@ public class PartidaServiceImpl implements PartidaService {
 
 	}
 
+	/**
+     * Agrega todos los personajes disponibles a una partida existente.
+     *
+     * @param idPartida El ID de la partida a la que se agregarán los personajes.
+     */
 	@Override
 	public void addAllPersonajes(long idPartida) {
 		Optional<Partida> optionalPartida = partidaRepository.findById(idPartida);
@@ -205,6 +245,12 @@ public class PartidaServiceImpl implements PartidaService {
 
 	
 
+	/**
+     * Agrega un personaje específico a una partida existente.
+     *
+     * @param idPartida    El ID de la partida a la que se agregará el personaje.
+     * @param idPersonaje  El ID del personaje que se agregará a la partida.
+     */
 	@Override
 	public void addpersonaje(long idPartida, int idPersonaje) {
 		Optional<Partida> optionalPartida = partidaRepository.findById(idPartida);
@@ -237,12 +283,24 @@ public class PartidaServiceImpl implements PartidaService {
 
 	}
 
+	/**
+     * Crea una nueva partida con la información proporcionada.
+     *
+     * @param partida La partida que se creará.
+     * @return La partida creada.
+     */
 	@Override
 	public Partida crearPartida(Partida partida) {
 
 		return partidaRepository.save(partida);
 	}
 
+	/**
+     * Da de baja una partida existente.
+     *
+     * @param idPartida El ID de la partida que se dará de baja.
+     * @return La partida que se dio de baja.
+     */
 	@Override
 	public Partida darDeBajaPartida(long idPartida) {
 		Optional<Partida> optionalPartida = partidaRepository.findById(idPartida);
@@ -258,6 +316,11 @@ public class PartidaServiceImpl implements PartidaService {
 		return partida;
 	}
 
+	/**
+     * Reinicia el estado de la aplicación, eliminando todas las partidas y datos relacionados.
+     *
+     * @return Una respuesta que indica el resultado de la operación.
+     */
 	@Override
 	public ResponseEntity<?> reiniciarTodo() {
 		String mensajeFinal = "";
@@ -290,6 +353,11 @@ public class PartidaServiceImpl implements PartidaService {
 
 	}
 
+	/**
+     * Obtiene una lista de todas las partidas disponibles.
+     *
+     * @return Una lista de todas las partidas.
+     */
 	@Override
 	public List<Partida> showAll() {
 		
